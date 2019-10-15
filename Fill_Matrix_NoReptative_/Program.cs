@@ -1,9 +1,10 @@
 ﻿using System;
 namespace Fill_Matrix_NoReptative_
 {
+    using System.Linq;
     using System.Collections.Generic;
 
-    internal class Program
+    internal partial class Program
     {
         public static int possible_patterns_count = 1;
 
@@ -17,10 +18,12 @@ namespace Fill_Matrix_NoReptative_
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Our numbers are: \n\t0 - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8");
             Console.WriteLine("Our Matrix: \n\t3 × 3 = 9, Our aiming numbers and matrix counts are same so for calculating\npossible patterns of this matrix while none of numbers should not repeat anymore is n!");
+            #region Calculating all of possible patterns
             for (byte i = 1; i <= 9; i++)
             {
                 possible_patterns_count *= i;
             }
+            #endregion
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\nAll of possible patterns count is::\t{0}", possible_patterns_count.ToString());
 
@@ -44,10 +47,11 @@ namespace Fill_Matrix_NoReptative_
                 rep_temp.Clear();
                 if (Rep_Matrixs.Contains_(buffer_) == false)
                 {
+                    if (Rep_Matrixs.Final_Goal_Contains_(buffer_)) Console.WriteLine("\nGOAL PATTERN FOUND!!!!\n"); else Console.WriteLine("\nIt is not our goal pattern..\n");
                     Rep_Matrixs.set_buffer(buffer_);
                     Counter += 1;
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("\nONE NEW PATTERN OF MATRIX FOUND!!! \n");
+                    Console.WriteLine("ONE NEW PATTERN OF MATRIX FOUND!!! \n");
                     Console.ForegroundColor = ConsoleColor.White;
                     int temp_counter = 0;
                     for (int satrha = 0; satrha < 3; satrha++)
@@ -65,6 +69,7 @@ namespace Fill_Matrix_NoReptative_
                     Rep_Matrixs.set_buffer(buffer_clean);
                 }
                 Console.ForegroundColor = ConsoleColor.Red;
+                Patterns_Alternative patterns_ = new Patterns_Alternative();
                 switch (Array.IndexOf<byte>(buffer_, 0))
                 {
                     case 0:
@@ -78,6 +83,7 @@ namespace Fill_Matrix_NoReptative_
                             if (i == 0) { 
                             temp_buffer[0] = temp_buffer[1];
                             temp_buffer[1] = 0;
+                            patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Second_Step
@@ -85,6 +91,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[0] = temp_buffer[3];
                                 temp_buffer[3] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Print_Job
@@ -118,6 +125,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[1] = temp_buffer[0];
                                 temp_buffer[0] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Second_Step
@@ -125,6 +133,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[1] = temp_buffer[2];
                                 temp_buffer[2] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Third_Step
@@ -132,6 +141,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[1] = temp_buffer[4];
                                 temp_buffer[4] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Print_Job
@@ -165,6 +175,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[2] = temp_buffer[1];
                                 temp_buffer[1] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Second_Step
@@ -172,6 +183,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[2] = temp_buffer[5];
                                 temp_buffer[5] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Print_Job
@@ -205,6 +217,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[3] = temp_buffer[0];
                                 temp_buffer[0] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Second_Step
@@ -212,6 +225,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[3] = temp_buffer[4];
                                 temp_buffer[4] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Third_Step
@@ -219,6 +233,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[3] = temp_buffer[6];
                                 temp_buffer[6] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Print_Job
@@ -252,6 +267,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[4] = temp_buffer[1];
                                 temp_buffer[1] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Second_Step
@@ -259,6 +275,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[4] = temp_buffer[3];
                                 temp_buffer[3] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Third_Step
@@ -266,6 +283,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[4] = temp_buffer[5];
                                 temp_buffer[5] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Fourth_Step
@@ -273,6 +291,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[4] = temp_buffer[7];
                                 temp_buffer[7] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             
@@ -307,6 +326,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[5] = temp_buffer[2];
                                 temp_buffer[2] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Second_Step
@@ -314,6 +334,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[5] = temp_buffer[4];
                                 temp_buffer[4] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Third_Step
@@ -321,6 +342,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[5] = temp_buffer[8];
                                 temp_buffer[8] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Print_Job
@@ -354,6 +376,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[6] = temp_buffer[3];
                                 temp_buffer[3] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Second_Step
@@ -361,6 +384,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[6] = temp_buffer[7];
                                 temp_buffer[7] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
 
@@ -395,6 +419,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[7] = temp_buffer[4];
                                 temp_buffer[4] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Second_Step
@@ -402,6 +427,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[7] = temp_buffer[6];
                                 temp_buffer[6] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Third_Step
@@ -409,6 +435,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[7] = temp_buffer[8];
                                 temp_buffer[8] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
 
@@ -443,6 +470,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[8] = temp_buffer[5];
                                 temp_buffer[5] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Second_Step
@@ -450,6 +478,7 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[8] = temp_buffer[7];
                                 temp_buffer[7] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
 
@@ -483,19 +512,6 @@ namespace Fill_Matrix_NoReptative_
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Press any key to exit...");
             Console.ReadKey();
-        }
-    }
-    public class Rep_Matrix
-    {
-        public List<Array> arrays = new List<Array>();
-        public bool Contains_(byte[] buffered_)
-        {
-            if (arrays.Contains(buffered_)) return true;
-            else return false;
-        }
-        public void set_buffer(byte[] buffered_)
-        {
-            arrays.Add(buffered_);
         }
     }
 }
