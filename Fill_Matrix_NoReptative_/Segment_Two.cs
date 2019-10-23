@@ -14,9 +14,14 @@ namespace Fill_Matrix_NoReptative_
     {
         public class Rep_Matrix
         {
-            public List<Array> arrays = new List<Array>();
+            private List<Array> arrays = new List<Array>();
             byte[] goal_rep1_ = new byte[9] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
             byte[] goal_rep2 = new byte[9] { 1, 2, 3, 4, 5, 6, 7, 8, 0 };
+            /// <summary>
+            /// Checks for array pattern 3x3 is available and if was not avilable before returns false.
+            /// </summary>
+            /// <param name="buffered_">Pass the array that you want be checked</param>
+            /// <returns></returns>
             public bool Contains_(byte[] buffered_)
             {
                 if (arrays.Contains(buffered_)) return true;
@@ -24,13 +29,36 @@ namespace Fill_Matrix_NoReptative_
             }
             public bool Final_Goal_Contains_(byte[] buffered_)
             {
-                if (goal_rep1_.SequenceEqual<byte>(buffered_) || goal_rep2.SequenceEqual<byte>(buffered_)) return true;
+                if (goal_rep1_.SequenceEqual<byte>(buffered_) || goal_rep2.SequenceEqual<byte>(buffered_)) { Print_Arrays(buffered_); System.Threading.Thread.Sleep(5000); return true; }
                 else return false;
             }
             public void set_buffer(byte[] buffered_)
             {
                 arrays.Add(buffered_);
             }
+        }
+        private static bool Goal_Found = false;
+        public static void Print_Arrays(byte[] temp_buffer)
+        {
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n<<<<<  GOAL IS FOUND  >>>>>\n");
+            int temp_counter = 0;
+            for (int satrha = 0; satrha < 3; satrha++)
+            {
+                for (int sotonha = 0; sotonha < 3; sotonha++)
+                {
+                    if (temp_buffer[temp_counter] == 0) Console.ForegroundColor = ConsoleColor.Green;
+                    else Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("{0}\t", temp_buffer[temp_counter]);
+                    temp_counter += 1;
+                }
+                Console.Write("\n");
+            }
+            Console.ForegroundColor = ConsoleColor.White;
+            Goal_Found = true;
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
         }
     }
 }

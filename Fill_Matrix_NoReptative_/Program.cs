@@ -10,9 +10,9 @@ namespace Fill_Matrix_NoReptative_
 
         private static void Main(string[] args)
         {
-
+            
             Rep_Matrix Rep_Matrixs = new Rep_Matrix();
-
+            Patterns_Alternative patterns_ = new Patterns_Alternative();
             Console.Title = "Developed by Mr. Touraj Ostovari :) 2019";
             Console.Write("Hi, welcome to my practive project that University Gave Me, It is a project for filling matrix\n");
             Console.ForegroundColor = ConsoleColor.Green;
@@ -26,28 +26,34 @@ namespace Fill_Matrix_NoReptative_
             #endregion
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\nAll of possible patterns count is::\t{0}", possible_patterns_count.ToString());
-
+            From_First_Again:
             int Counter = 0;
             System.Collections.Generic.List<int> rep_temp = new List<int>();
             while (Counter != possible_patterns_count)
             {
-                byte[] buffer_ = new byte[9];
+                byte[] buffer_ = new byte[9] { 1,2,3,7,4,8,0,6,5 };
                 Random rand = new Random();
-                for (int i = 0; i < 9;)
-                {
-                    int temp_numbers = (byte)rand.Next(0, 9);
-
-                    if (!rep_temp.Contains(temp_numbers))
+                Console.WriteLine("\nDo you want use default values?\ty/n");
+                if(Console.ReadLine() == "n") { 
+                    #region Generates_Nine_Numbers
+                    for (int i = 0; i < 9;)
                     {
-                        rep_temp.Add((byte)temp_numbers);
-                        buffer_[i] = (byte)temp_numbers;
-                        i++;
+                        int temp_numbers = (byte)rand.Next(0, 9);
+
+                        if (!rep_temp.Contains(temp_numbers))
+                        {
+                            rep_temp.Add((byte)temp_numbers);
+                            buffer_[i] = (byte)temp_numbers;
+                            i++;
+                        }
                     }
                 }
+                #endregion
+                Generate_again:
                 rep_temp.Clear();
                 if (Rep_Matrixs.Contains_(buffer_) == false)
                 {
-                    if (Rep_Matrixs.Final_Goal_Contains_(buffer_)) Console.WriteLine("\nGOAL PATTERN FOUND!!!!\n"); else Console.WriteLine("\nIt is not our goal pattern..\n");
+                    if (Rep_Matrixs.Final_Goal_Contains_(buffer_)) Console.WriteLine("\nGOAL PATTERN FOUND!!!!\n");
                     Rep_Matrixs.set_buffer(buffer_);
                     Counter += 1;
                     Console.ForegroundColor = ConsoleColor.Magenta;
@@ -65,11 +71,11 @@ namespace Fill_Matrix_NoReptative_
                         }
                         Console.Write("\n");
                     }
-                    byte[] buffer_clean = new byte[9];
-                    Rep_Matrixs.set_buffer(buffer_clean);
+                    //byte[] buffer_clean = new byte[9];
+                    //Rep_Matrixs.set_buffer(buffer_clean);
                 }
                 Console.ForegroundColor = ConsoleColor.Red;
-                Patterns_Alternative patterns_ = new Patterns_Alternative();
+                
                 switch (Array.IndexOf<byte>(buffer_, 0))
                 {
                     case 0:
@@ -505,13 +511,20 @@ namespace Fill_Matrix_NoReptative_
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("\nPattern number:\t{0}", Counter);
                 Console.ForegroundColor = ConsoleColor.White;
-                System.Threading.Thread.Sleep(450);
-                
-                Console.Write("\nDo you want stop generating job?? y/n   "); if (Console.ReadLine() == "y") break;
+                System.Threading.Thread.Sleep(50);
+                buffer_ = (byte[])patterns_.Patterns_Alt[0].Clone();
+                patterns_.Patterns_Alt.Remove(patterns_.Patterns_Alt[0]);
+                //if (Rep_Matrixs.Final_Goal_Contains_(buffer_) == true) Print_Arrays((byte[])buffer_.Clone());
+                if(Goal_Found == true) { 
+                Console.Write("\nDo you want continue generating job?? y/n   "); if (Console.ReadLine() == "n") break; else { Goal_Found = false; Console.Clear();  goto From_First_Again; }
+                }
+                goto Generate_again;
             }
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("Press any key to exit...");
             Console.ReadKey();
+            Environment.Exit(0);
+
         }
     }
 }
