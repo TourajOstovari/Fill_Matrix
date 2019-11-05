@@ -1,7 +1,6 @@
 ﻿using System;
 namespace Fill_Matrix_NoReptative_
 {
-    using System.Linq;
     using System.Collections.Generic;
 
     internal partial class Program
@@ -10,7 +9,7 @@ namespace Fill_Matrix_NoReptative_
 
         private static void Main(string[] args)
         {
-            
+
             Rep_Matrix Rep_Matrixs = new Rep_Matrix();
             Patterns_Alternative patterns_ = new Patterns_Alternative();
             Console.Title = "Developed by Mr. Touraj Ostovari :) 2019";
@@ -31,10 +30,11 @@ namespace Fill_Matrix_NoReptative_
             System.Collections.Generic.List<int> rep_temp = new List<int>();
             while (Counter != possible_patterns_count)
             {
-                byte[] buffer_ = new byte[9] { 1,2,3,7,4,8,0,6,5 };
+                byte[] buffer_ = new byte[9] { 1, 2, 3, 7, 4, 8, 0, 6, 5 };
                 Random rand = new Random();
                 Console.WriteLine("\nDo you want use default values?\ty/n");
-                if(Console.ReadLine() == "n") { 
+                if (Console.ReadLine() == "n")
+                {
                     #region Generates_Nine_Numbers
                     for (int i = 0; i < 9;)
                     {
@@ -75,7 +75,7 @@ namespace Fill_Matrix_NoReptative_
                     //Rep_Matrixs.set_buffer(buffer_clean);
                 }
                 Console.ForegroundColor = ConsoleColor.Red;
-                
+
                 switch (Array.IndexOf<byte>(buffer_, 0))
                 {
                     case 0:
@@ -86,10 +86,11 @@ namespace Fill_Matrix_NoReptative_
                             byte[] temp_buffer = new byte[9];
                             buffer_.CopyTo(temp_buffer, 0);
                             #region First_Step
-                            if (i == 0) { 
-                            temp_buffer[0] = temp_buffer[1];
-                            temp_buffer[1] = 0;
-                            patterns_.Patterns_Alt.Add(temp_buffer);
+                            if (i == 0)
+                            {
+                                temp_buffer[0] = temp_buffer[1];
+                                temp_buffer[1] = 0;
+                                patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
                             #region Second_Step
@@ -102,6 +103,7 @@ namespace Fill_Matrix_NoReptative_
                             #endregion
                             #region Print_Job
                             int temp_counter = 0;
+                            if (Rep_Matrixs.Final_Goal_Contains_(temp_buffer) == true) Goal_Found = true;
                             for (int satrha = 0; satrha < 3; satrha++)
                             {
                                 for (int sotonha = 0; sotonha < 3; sotonha++)
@@ -152,6 +154,7 @@ namespace Fill_Matrix_NoReptative_
                             #endregion
                             #region Print_Job
                             int temp_counter = 0;
+                            if (Rep_Matrixs.Final_Goal_Contains_(temp_buffer) == true) Goal_Found = true;
                             for (int satrha = 0; satrha < 3; satrha++)
                             {
                                 for (int sotonha = 0; sotonha < 3; sotonha++)
@@ -194,6 +197,7 @@ namespace Fill_Matrix_NoReptative_
                             #endregion
                             #region Print_Job
                             int temp_counter = 0;
+                            if (Rep_Matrixs.Final_Goal_Contains_(temp_buffer) == true) Goal_Found = true;
                             for (int satrha = 0; satrha < 3; satrha++)
                             {
                                 for (int sotonha = 0; sotonha < 3; sotonha++)
@@ -244,6 +248,7 @@ namespace Fill_Matrix_NoReptative_
                             #endregion
                             #region Print_Job
                             int temp_counter = 0;
+                            if (Rep_Matrixs.Final_Goal_Contains_(temp_buffer) == true) Goal_Found = true;
                             for (int satrha = 0; satrha < 3; satrha++)
                             {
                                 for (int sotonha = 0; sotonha < 3; sotonha++)
@@ -300,9 +305,11 @@ namespace Fill_Matrix_NoReptative_
                                 patterns_.Patterns_Alt.Add(temp_buffer);
                             }
                             #endregion
-                            
+
                             #region Print_Job
                             int temp_counter = 0;
+                            if (Rep_Matrixs.Final_Goal_Contains_(temp_buffer) == true) Goal_Found = true;
+
                             for (int satrha = 0; satrha < 3; satrha++)
                             {
                                 for (int sotonha = 0; sotonha < 3; sotonha++)
@@ -353,6 +360,7 @@ namespace Fill_Matrix_NoReptative_
                             #endregion
                             #region Print_Job
                             int temp_counter = 0;
+                            if (Rep_Matrixs.Final_Goal_Contains_(temp_buffer) == true) Goal_Found = true;
                             for (int satrha = 0; satrha < 3; satrha++)
                             {
                                 for (int sotonha = 0; sotonha < 3; sotonha++)
@@ -396,6 +404,7 @@ namespace Fill_Matrix_NoReptative_
 
                             #region Print_Job
                             int temp_counter = 0;
+                            if (Rep_Matrixs.Final_Goal_Contains_(temp_buffer) == true) Goal_Found = true;
                             for (int satrha = 0; satrha < 3; satrha++)
                             {
                                 for (int sotonha = 0; sotonha < 3; sotonha++)
@@ -447,6 +456,7 @@ namespace Fill_Matrix_NoReptative_
 
                             #region Print_Job
                             int temp_counter = 0;
+                            if (Rep_Matrixs.Final_Goal_Contains_(temp_buffer) == true) Goal_Found = true;
                             for (int satrha = 0; satrha < 3; satrha++)
                             {
                                 for (int sotonha = 0; sotonha < 3; sotonha++)
@@ -490,6 +500,7 @@ namespace Fill_Matrix_NoReptative_
 
                             #region Print_Job
                             int temp_counter = 0;
+                            if (Rep_Matrixs.Final_Goal_Contains_(temp_buffer) == true) Goal_Found = true;
                             for (int satrha = 0; satrha < 3; satrha++)
                             {
                                 for (int sotonha = 0; sotonha < 3; sotonha++)
@@ -514,9 +525,10 @@ namespace Fill_Matrix_NoReptative_
                 System.Threading.Thread.Sleep(50);
                 buffer_ = (byte[])patterns_.Patterns_Alt[0].Clone();
                 patterns_.Patterns_Alt.Remove(patterns_.Patterns_Alt[0]);
-                //if (Rep_Matrixs.Final_Goal_Contains_(buffer_) == true) Print_Arrays((byte[])buffer_.Clone());
-                if(Goal_Found == true) { 
-                Console.Write("\nDo you want continue generating job?? y/n   "); if (Console.ReadLine() == "n") break; else { Goal_Found = false; Console.Clear();  goto From_First_Again; }
+                //if (Rep_Matrixs.Final_Goal_Contains_(buffer_) == true) Goal_Found = true;
+                if (Goal_Found == true)
+                {
+                    Console.Write("\nDo you want continue generating job?? y/n   "); if (Console.ReadLine() == "n") break; else { Goal_Found = false; Console.Clear(); goto From_First_Again; }
                 }
                 goto Generate_again;
             }
