@@ -6,7 +6,8 @@ namespace Fill_Matrix_NoReptative_
     internal partial class Program
     {
         public static int possible_patterns_count = 1;
-
+        public static String way = "";
+        public static String Temp_way = "";
         private static void Main(string[] args)
         {
 
@@ -49,8 +50,10 @@ namespace Fill_Matrix_NoReptative_
                     }
                 }
                 #endregion
-                Generate_again:
+                
+            Generate_again:
                 rep_temp.Clear();
+                
                 if (Rep_Matrixs.Contains_(buffer_) == false)
                 {
                     if (Rep_Matrixs.Final_Goal_Contains_(buffer_)) Console.WriteLine("\nGOAL PATTERN FOUND!!!!\n");
@@ -90,7 +93,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[0] = temp_buffer[1];
                                 temp_buffer[1] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Right";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Right"));
                             }
                             #endregion
                             #region Second_Step
@@ -98,7 +102,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[0] = temp_buffer[3];
                                 temp_buffer[3] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Down";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer,way+"-Down"));
                             }
                             #endregion
                             #region Print_Job
@@ -133,7 +138,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[1] = temp_buffer[0];
                                 temp_buffer[0] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Left";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer,way+"-Left"));
                             }
                             #endregion
                             #region Second_Step
@@ -141,7 +147,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[1] = temp_buffer[2];
                                 temp_buffer[2] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Right";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer,way+"-Right"));
                             }
                             #endregion
                             #region Third_Step
@@ -149,7 +156,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[1] = temp_buffer[4];
                                 temp_buffer[4] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Down";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer,way+"-Down"));
                             }
                             #endregion
                             #region Print_Job
@@ -184,7 +192,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[2] = temp_buffer[1];
                                 temp_buffer[1] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Left";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer,way+"-Left"));
                             }
                             #endregion
                             #region Second_Step
@@ -192,7 +201,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[2] = temp_buffer[5];
                                 temp_buffer[5] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Down";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer,way+"-Down"));
                             }
                             #endregion
                             #region Print_Job
@@ -227,7 +237,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[3] = temp_buffer[0];
                                 temp_buffer[0] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Up";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer,way+"-Up"));
                             }
                             #endregion
                             #region Second_Step
@@ -235,7 +246,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[3] = temp_buffer[4];
                                 temp_buffer[4] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Right";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Right"));
                             }
                             #endregion
                             #region Third_Step
@@ -243,7 +255,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[3] = temp_buffer[6];
                                 temp_buffer[6] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Down";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Down"));
                             }
                             #endregion
                             #region Print_Job
@@ -278,7 +291,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[4] = temp_buffer[1];
                                 temp_buffer[1] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Up";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Up"));
                             }
                             #endregion
                             #region Second_Step
@@ -286,7 +300,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[4] = temp_buffer[3];
                                 temp_buffer[3] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Left";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Left"));
                             }
                             #endregion
                             #region Third_Step
@@ -294,7 +309,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[4] = temp_buffer[5];
                                 temp_buffer[5] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Right";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Right"));
                             }
                             #endregion
                             #region Fourth_Step
@@ -302,7 +318,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[4] = temp_buffer[7];
                                 temp_buffer[7] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Down";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Down"));
                             }
                             #endregion
 
@@ -339,7 +356,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[5] = temp_buffer[2];
                                 temp_buffer[2] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Up";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Up"));
                             }
                             #endregion
                             #region Second_Step
@@ -347,7 +365,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[5] = temp_buffer[4];
                                 temp_buffer[4] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Left";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Left"));
                             }
                             #endregion
                             #region Third_Step
@@ -355,7 +374,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[5] = temp_buffer[8];
                                 temp_buffer[8] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Down";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Down"));
                             }
                             #endregion
                             #region Print_Job
@@ -390,7 +410,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[6] = temp_buffer[3];
                                 temp_buffer[3] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Up";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Up"));
                             }
                             #endregion
                             #region Second_Step
@@ -398,7 +419,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[6] = temp_buffer[7];
                                 temp_buffer[7] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Right";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Right"));
                             }
                             #endregion
 
@@ -434,7 +456,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[7] = temp_buffer[4];
                                 temp_buffer[4] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Up";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Up"));
                             }
                             #endregion
                             #region Second_Step
@@ -442,7 +465,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[7] = temp_buffer[6];
                                 temp_buffer[6] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Left";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Left"));
                             }
                             #endregion
                             #region Third_Step
@@ -450,7 +474,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[7] = temp_buffer[8];
                                 temp_buffer[8] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Right";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Right"));
                             }
                             #endregion
 
@@ -486,7 +511,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[8] = temp_buffer[5];
                                 temp_buffer[5] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Up";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Up"));
                             }
                             #endregion
                             #region Second_Step
@@ -494,7 +520,8 @@ namespace Fill_Matrix_NoReptative_
                             {
                                 temp_buffer[8] = temp_buffer[7];
                                 temp_buffer[7] = 0;
-                                patterns_.Patterns_Alt.Add(temp_buffer);
+                                Temp_way = way + "-Left";
+                                patterns_.Patterns_Alt.Add(new Rep_Data_Struct(temp_buffer, way + "-Left"));
                             }
                             #endregion
 
@@ -523,9 +550,10 @@ namespace Fill_Matrix_NoReptative_
                 Console.WriteLine("\nPattern number:\t{0}", Counter);
                 Console.ForegroundColor = ConsoleColor.White;
                 System.Threading.Thread.Sleep(50);
-                buffer_ = (byte[])patterns_.Patterns_Alt[0].Clone();
+                buffer_ = (byte[]) patterns_.Patterns_Alt[0].Pattern.Clone();
+                way = patterns_.Patterns_Alt[0].Pattern_way;
                 patterns_.Patterns_Alt.Remove(patterns_.Patterns_Alt[0]);
-                //if (Rep_Matrixs.Final_Goal_Contains_(buffer_) == true) Goal_Found = true;
+                if (Rep_Matrixs.Final_Goal_Contains_(buffer_) == true) Goal_Found = true;
                 if (Goal_Found == true)
                 {
                     Console.Write("\nDo you want continue generating job?? y/n   "); if (Console.ReadLine() == "n") break; else { Goal_Found = false; Console.Clear(); goto From_First_Again; }

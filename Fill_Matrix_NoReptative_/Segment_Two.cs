@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace Fill_Matrix_NoReptative_
 {
+    class Rep_Data_Struct
+    {
+        public Array Pattern;
+        public String Pattern_way;
+        public Rep_Data_Struct(Array pattern,String pattern_way)
+        {
+            this.Pattern = pattern; this.Pattern_way = pattern_way;
+        }
+    }
     class Patterns_Alternative
     {
-        public List<Array> Patterns_Alt = new List<Array>();
+        public List<Rep_Data_Struct> Patterns_Alt = new List<Rep_Data_Struct>();
     }
     internal partial class Program
     {
@@ -55,6 +64,9 @@ namespace Fill_Matrix_NoReptative_
                 }
                 Console.Write("\n");
             }
+            Console.WriteLine("\n\t WAY FOR SOLVING MATRIX AND SORTING : {0}\n", Temp_way);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\t With Moving Zero According Published Directions, You Can Solve The Matrix And Make IT Sorted  ");
             Console.ForegroundColor = ConsoleColor.White;
             Goal_Found = true;
             Console.Write("Press any key to continue...");
