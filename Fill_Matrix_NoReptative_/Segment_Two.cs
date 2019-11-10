@@ -53,6 +53,7 @@ namespace Fill_Matrix_NoReptative_
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\n<<<<<<<<  GOAL IS FOUND  >>>>>>>>\n");
             int temp_counter = 0;
+
             for (int satrha = 0; satrha < 3; satrha++)
             {
                 for (int sotonha = 0; sotonha < 3; sotonha++)

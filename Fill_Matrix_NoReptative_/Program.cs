@@ -81,6 +81,7 @@ namespace Fill_Matrix_NoReptative_
 
                 switch (Array.IndexOf<byte>(buffer_, 0))
                 {
+
                     case 0:
                         #region Main_Seprate_Process
                         Console.WriteLine("\n>>>>>>>  Replacing 0   >>>>>>> \n");
